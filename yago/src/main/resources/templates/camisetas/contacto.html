@@ -1,0 +1,200 @@
+<!doctype html>
+<html xmlns:th="thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <style>
+        input[type=text],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
+        }
+
+        input[type=submit] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+            input[type=submit]:hover {
+                background-color: #45a049;
+            }
+
+
+        /* Style the container/contact section */
+
+        label {
+            color:black;
+        }
+        .contacto h2 {
+            font-family: 'Roboto Mono', monospace;
+            text-transform:uppercase;
+        }
+        .contacto h2,
+        p {
+            color: black;
+        }
+
+        .contacto {
+            border-radius: 5px;
+            padding: 10px;
+            background-color: #E0B0FF;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .column {
+            float: left;
+            width: 40%;
+            margin-top: 6px;
+            padding: 20px;
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .titulo h1 {
+            color: white;
+            /*line-height: normal;*/
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        #banner img {
+            width: 100%;
+            height: 500px;
+            /*background-size:cover;*/
+        }
+        .navbar a{
+        font-size:23px;
+        color: #f4f4f4 !important;
+        text-transform: uppercase;
+        font-family: 'Montserrat';
+        }
+
+            .navbar a:hover {
+                background-color: #c10000a2;
+            }
+        /*.articulo {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid black;
+        }*/
+    </style>
+</head>
+<body>
+   
+    <div class="container-fluid">
+        <div class="row">
+			<div class="col-md-12 col-md-offset-2">
+				    <div class="card-body">
+				    <a th:href="@{/logout}" class=" btn-sm  ml-auto  float-right">Salir</a>
+				        <p sec:authentication="name" class="float-right"></p>
+						
+					
+				</div>
+			</div>
+		</div>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+            <a th:href="@{/index}" class="navbar-brand">Sports Shop</a>
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar">
+                <!--aqui he puesto el class mr-auto-->
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a th:href="@{/productos}" class="nav-link">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/acercade}">Acerca de</a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:href="@{/contacto}" class="nav-link">Contacto</a>
+                    </li>
+                </ul>
+                <!--aqui he puesto el class my-2 my-lg-0-->
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+        <section id="banner">
+            <img src="https://www.camisetasfutboleses.com/image/cache/catalog/logo/camisetas-de-futbol-baratas-600x600.jpg" class="img-top img-fluid" />
+            <div class="titulo">
+            <h1 class="bg-info text-center h1-bottom">CONTACTO</h1>
+            </div>
+        </section>
+        <div class="contacto">
+            <div style="text-align:center">
+                <h2>Contacta con nosotros</h2>
+                <p>Dinos que te ha parecido esta página y cual es tu liga y tus equipos favoritos:</p>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <img src="https://estaticos.muyinteresante.es/uploads/images/dossier/555f4f41582c75822962ee91/futbol1.jpg" style="width:100%">
+                </div>
+                <div class="column">
+                    <form>
+                        <label for="fname">Nombre</label>
+                        <input type="text" id="fname" name="firstname" placeholder="Nombre">
+                        <label for="lname">Correo electrónico</label>
+                        <input type="text" id="lname" name="lastname" placeholder="Correo electrónico">
+                        <label for="subject">Comentario</label>
+                        <textarea id="subject" name="subject" placeholder="Escríbenos" style="height:170px"></textarea>
+                        <input type="submit" value="Enviar">
+                    </form>
+                </div>
+            </div>
+        </div>
+        </div>
+
+
+
+        <script>
+            var ngApp = angular.module('myNgApp', []);
+            /*
+            ngApp.controller('myController', function ($scope) {
+                $scope.message = "Hello World!";
+            });
+            */
+            var camisetas = [
+                { nombre: 'Barcelona', image: 'https://www.futboleros.es/wp-content/uploads/2021/04/BARCA-CLASICO.jpg', precio: '20€' },
+                { nombre: 'Sporting de Gijón', image: 'https://www.futbolemotion.com/imagesarticulos/151371/grandes/camiseta-nike-sporting-de-gijon-primera-equipacion-2020-2021-rojo-0.jpg', precio: '24.99€' },
+                { nombre: 'Real Madrid', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCrI6fQ_Ybrw90poVmJM0h6WEosx49paFoEnXdr57uAyRXJelVGYHvVyABLctNoRXCiUIMZsE&usqp=CAc', precio: '27.99€' },
+                { nombre: 'Liverpool', image: 'https://media.futbolmania.com/media/catalog/product/cache/1/small_image/300x/9df78eab33525d08d6e5fb8d27136e95/D/B/DB2560-688_imagen-de-la-camiseta-de-futbol-de-la-primera-equipacion-liverpool-fc-nike-Dri-Fit-stadium-2021-rojo_hover_traseral.jpg', precio: '27.99€' },
+                { nombre: 'PSG', image: 'https://footdealer.com/wp-content/uploads/2021/05/MAILLOT-PSG-DOMICILE-2021-2022-1.jpg', precio: '28.99€' },
+                { nombre: 'Bayern de Munich', image: 'https://www.futbolemotion.com/imagesarticulos/142274/grandes/camiseta-adidas-fc-bayern-munich-primera-equipacion-2020-2021-true-red-0.jpg', precio: '29.99€' },
+                { nombre: 'Juventus', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd4hIImdCSiDVNSyuFl3R_PhSJi9j1BQGthkk0H1Yhoxg0BprkGRrFHyseZUcHzeka9WDrskk&usqp=CAc', precio: '23.99€' },
+                { nombre: 'Manchester City', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwXIgJzXvEHgRYp26lBMe6Jm2swBL0FMPNCIUHsZwFNkAS0vDkGn5PbAytEdz5KYrFeYqpOZs&usqp=CAc', precio: '32.99€' },
+                { nombre: 'Inter de Milán', image: 'https://www.camisetasdefutbolshop.com/image/cache/2020%E7%90%83%E8%A1%A3/inter-de-milan/camiseta-inter-de-milan-1-equipacion-2020-2021-001-270x270.jpg', precio: '22.99€' },
+                { nombre: 'Atlético de Madrid', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTE_E1pNJ28bcw-O4il63Os0T0cWS-FY-mup_cBAXLvDuNkgJQf2wEM7D0TVw&usqp=CAc', precio: '25.99€' },
+            ];
+            ngApp.controller('Controller', function ($scope) {
+                $scope.articulos = camisetas;
+            });
+
+            /*ngApp.controller('Controller', function ($scope) {
+                $scope.articulo = camiseta;
+            });*/
+
+
+        </script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+</body>
+</html>

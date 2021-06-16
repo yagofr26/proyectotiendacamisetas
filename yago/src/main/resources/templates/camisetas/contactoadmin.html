@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html xmlns:th="thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+<title>Insert title here</title>
+<style>
+  .container{
+  border:solid blue;
+  }
+    #banner img {
+            width: 100%;
+            height: 500px;
+            /*background-size:cover;*/
+        }
+        
+        .titulo h1 {
+            color: white;
+            /*line-height: normal;*/
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            vertical-align: middle;
+        }
+        
+        .navbar a{
+        font-size:40px;
+        color: #f4f4f4 !important;
+        }
+        .navg a{
+            color: #f4f4f4 !important;
+            font-family: 'Montserrat';
+            font-size: 23px;
+            padding: 10px 15px;
+            /*text-align: center;*/
+            text-transform: uppercase;
+        }
+
+            .navg a:hover {
+                background-color: #c10000a2;
+            }
+            .imagen{
+            height:80px;
+            width:auto;
+            }
+              input[type=text],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
+        }
+
+        input[type=submit] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+            input[type=submit]:hover {
+                background-color: #45a049;
+            }
+
+
+        /* Style the container/contact section */
+
+        label {
+            color:black;
+        }
+        .contacto h2 {
+            font-family: 'Roboto Mono', monospace;
+            text-transform:uppercase;
+        }
+        .contacto h2,
+        p {
+            color: black;
+        }
+
+        .contacto {
+            border-radius: 5px;
+            padding: 10px;
+            background-color: #E0B0FF;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .column {
+            float: left;
+            width: 40%;
+            margin-top: 6px;
+            padding: 20px;
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+   </style>  
+</head>
+<body>
+ <div class="container-fluid">
+     <div class="row">
+			<div class="col-md-12 col-md-offset-2">
+				    <div class="card-body">
+				    <a th:href="@{/logout}" class=" btn-sm  ml-auto  float-right">Salir</a>
+				        <p sec:authentication="name" class="float-right"></p>
+						
+					
+				</div>
+			</div>
+		</div>
+        <div class="bg-dark ">
+                <nav class="navbar navbar-expand-lg navbar-light">
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class=" navg navbar-nav w-100 justify-content-center ">
+                            <a class="nav-item nav-link active" th:href="@{/admin}">Sports Shop</a>
+                            <a class="nav-item nav-link" th:href="@{/insertar}">Añadir producto</a>
+                            <a class="nav-item nav-link" th:href="@{/acercadeadmin}">Acerca de</a>
+                            <a class="nav-item nav-link" th:href="@{/contactoadmin}">Contacto</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+         <section id="banner">
+            <img src="https://s1.eestatic.com/2020/06/30/elbernabeu/deporte-futbol-camisetas_501711343_154804753_1024x576.jpg" class="img-top img-fluid" />
+              <div class="titulo">
+            <h1 class="bg-info text-center">CONTACTO</h1>
+            </div>
+        </section>
+        
+          <div class="contacto">
+            <div style="text-align:center">
+                <h2>Contacta con nosotros</h2>
+                <p>Dinos que te ha parecido esta página y cual es tu liga y tus equipos favoritos:</p>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <img src="https://estaticos.muyinteresante.es/uploads/images/dossier/555f4f41582c75822962ee91/futbol1.jpg" style="width:100%">
+                </div>
+                <div class="column">
+                    <form>
+                        <label for="fname">Nombre</label>
+                        <input type="text" id="fname" name="firstname" placeholder="Nombre">
+                        <label for="lname">Correo electrónico</label>
+                        <input type="text" id="lname" name="lastname" placeholder="Correo electrónico">
+                        <label for="subject">Comentario</label>
+                        <textarea id="subject" name="subject" placeholder="Escríbenos" style="height:170px"></textarea>
+                        <input type="submit" value="Enviar">
+                    </form>
+                </div>
+            </div>
+        </div>
+        </div>
+        
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+</body>
+</html>

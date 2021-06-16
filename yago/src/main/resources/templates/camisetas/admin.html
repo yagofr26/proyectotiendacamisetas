@@ -1,0 +1,117 @@
+<!doctype html>
+<html xmlns:th="thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/estilosh.css">
+    <link href="https://fonts.googleapis.com/css?family=Anton|Montserrat&display=swap" rel="stylesheet">
+    <title>Tutorial</title>
+  <style>
+  .container{
+  border:solid blue;
+  }
+    #banner img {
+            width: 100%;
+            height: 500px;
+            /*background-size:cover;*/
+        }
+        
+        .titulo h1 {
+            color: white;
+            /*line-height: normal;*/
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            vertical-align: middle;
+        }
+        
+        .navbar a{
+        font-size:40px;
+        color: #f4f4f4 !important;
+        }
+        .navg a{
+            color: #f4f4f4 !important;
+            font-family: 'Montserrat';
+            font-size: 23px;
+            padding: 10px 15px;
+            /*text-align: center;*/
+            text-transform: uppercase;
+        }
+
+            .navg a:hover {
+                background-color: #c10000a2;
+            }
+            .imagen{
+            height:80px;
+            width:auto;
+            }
+   </style>  
+</head>
+
+<body>
+
+    
+    <div class="container-fluid">
+     <div class="row">
+			<div class="col-md-12 col-md-offset-2">
+				    <div class="card-body">
+				    <a th:href="@{/logout}" class=" btn-sm  ml-auto  float-right">Salir</a>
+				        <p sec:authentication="name" class="float-right"></p>
+						
+					
+				</div>
+			</div>
+		</div>
+        <div class="bg-dark ">
+                <nav class="navbar navbar-expand-lg navbar-light">
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class=" navg navbar-nav w-100 justify-content-center ">
+                            <a class="nav-item nav-link active" th:href="@{/admin}">Sports Shop</a>
+                            <a class="nav-item nav-link" th:href="@{/insertar}">Añadir producto</a>
+                            <a class="nav-item nav-link" th:href="@{/acercadeadmin}">Acerca de</a>
+                            <a class="nav-item nav-link" th:href="@{/contactoadmin}">Contacto</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        
+         <section id="banner">
+            <img src="https://s1.eestatic.com/2020/06/30/elbernabeu/deporte-futbol-camisetas_501711343_154804753_1024x576.jpg" class="img-top img-fluid" />
+              <div class="titulo">
+            <h1 class="bg-info text-center">CAMISETAS</h1>
+            </div>
+        </section>
+        <div class="container-fluid">
+  <table class="table">
+<tr class="bg-warning ">
+   <th>ID</th>
+   <th>NOMBRE</th>
+   <th>PRECIO</th>
+   <th>IMAGE</th>
+   <th>ACCION</th>
+   
+</tr>
+<tr th:each="camiseta : ${camisetas}">
+  <td th:text="${camiseta.idcamiseta}"></td>
+  <td th:text="${camiseta.nombre}"></td>
+   <td th:text="${camiseta.precio}"></td>
+   <td><img class="imagen" th:src="@{${camiseta.image}}" th:alt="${camiseta.image}"/>
+   </td>
+  <td><a class="btn btn-warning" th:href="@{/eliminar(idcamiseta=${camiseta.idcamiseta})}">Eliminar</a>
+  <a class="btn btn-danger" th:href="@{/modificar(idcamiseta=${camiseta.idcamiseta})}">Actualizar</a></td>
+  </tr>
+</table>
+</div>
+</div>
+
+</body>
+</html>
