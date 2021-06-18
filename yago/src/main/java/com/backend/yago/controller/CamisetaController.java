@@ -157,7 +157,7 @@ public class CamisetaController {
 				byte[] bytes= image.getBytes();
 				Path rutaAbsoluta= Paths.get(ruta + "//" + image.getOriginalFilename());
 				Files.write(rutaAbsoluta, bytes);
-				camiseta.setImage("https://proyectotiendacamisetas.herokuapp.com/CamisetasFutbol/" + image.getOriginalFilename());
+				camiseta.setImage("https://proyectosportshop.herokuapp.com/CamisetasFutbol/" + image.getOriginalFilename());
 			}catch (Exception e) {
 				
 			}
