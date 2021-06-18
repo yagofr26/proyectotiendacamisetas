@@ -151,13 +151,13 @@ public class CamisetaController {
 	public String guardar(@RequestParam(name = "file" , required = false) MultipartFile image, @ModelAttribute CamisetaVO camiseta, RedirectAttributes flash, Model modelo)
 	{
 		if(!image.isEmpty()) {
-			String ruta= "C:\\Users\\yagof\\Desktop\\ProyectoCamisetasFutbol\\yago\\images";
+			String ruta= "/tmp";
 			
 			try {
 				byte[] bytes= image.getBytes();
 				Path rutaAbsoluta= Paths.get(ruta + "//" + image.getOriginalFilename());
 				Files.write(rutaAbsoluta, bytes);
-				camiseta.setImage("http://localhost:8080/CamisetasFutbol/" + image.getOriginalFilename());
+				camiseta.setImage("https://proyectotiendacamisetas.herokuapp.com/CamisetasFutbol/" + image.getOriginalFilename());
 			}catch (Exception e) {
 				
 			}
