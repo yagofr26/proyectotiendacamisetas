@@ -40,7 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
       http.authorizeRequests().antMatchers(HttpMethod.POST, "/submit").hasRole("ADMIN");
       http.httpBasic();
       http.formLogin().loginPage("/login");
-      http.logout().logoutSuccessUrl("/home");
+      http.logout().logoutSuccessUrl("/");
       http.exceptionHandling().accessDeniedPage("/403");
 	  http.csrf().disable();
    }
