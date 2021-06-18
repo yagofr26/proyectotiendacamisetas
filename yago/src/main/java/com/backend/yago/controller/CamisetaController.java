@@ -151,7 +151,7 @@ public class CamisetaController {
 	public String guardar(@RequestParam(name = "file" , required = false) MultipartFile image, @ModelAttribute CamisetaVO camiseta, RedirectAttributes flash, Model modelo)
 	{
 		if(!image.isEmpty()) {
-			String ruta= "/tmp";
+			String ruta= "/app/images";
 			
 			try {
 				byte[] bytes= image.getBytes();
