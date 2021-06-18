@@ -69,7 +69,7 @@ public class CamisetaController {
 		return "403";
 	}
 	
-	@GetMapping("/home")
+	@GetMapping("/")
 	public String home() {
 		return "camisetas/home";
 	}
