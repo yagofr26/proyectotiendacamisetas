@@ -146,7 +146,7 @@ public class CamisetaController {
 	}
 	
 	
-	//Subir imagenes
+	//Subir 
 	@PostMapping("/submit")
 	public String guardar(@RequestParam(name = "file" , required = false) MultipartFile image, @ModelAttribute CamisetaVO camiseta, RedirectAttributes flash, Model modelo)
 	{
